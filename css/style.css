@@ -2807,16 +2807,57 @@ p { color: var(--color-mid); line-height: 1.8; }
 /* =========================================================
    HERO — real background photo
    ========================================================= */
+
+/* Full-width hero background using home.jpeg */
+.hero {
+  background-image: url('home.jpeg') !important;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Dark green overlay so white text reads clearly */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 40, 30, 0.85) 0%,
+    rgba(13, 79, 60, 0.78) 50%,
+    rgba(26, 122, 94, 0.65) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hide old floating shapes — not needed with real photo */
+.hero-bg-shapes { display: none; }
+
+/* Hide the image frame box — photo is now the full background */
 .hero-image-frame {
-  background-image: url('../home.jpeg');
-  background-size: cover;
-  background-position: center top;
+  display: none;
 }
 
 /* Hide placeholder text when real image loads */
 .hero-image-frame .hero-image-placeholder {
   background: rgba(13, 79, 60, 0.45);
 }
+
+/* Hero content takes full width now */
+.hero-container {
+  grid-template-columns: 1fr !important;
+  max-width: 800px;
+  text-align: left;
+}
+
+.hero-buttons { justify-content: flex-start; }
+.hero-trust   { justify-content: flex-start; }
 
 /* Remove green box behind logo entirely */
 .logo-icon {
@@ -3186,3 +3227,128 @@ p { color: var(--color-mid); line-height: 1.8; }
   }
   .gallery-item.gallery-wide { grid-column: span 1; }
 }
+
+/* =========================================================
+   WHATSAPP FLOATING BUTTON
+   ========================================================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.75rem;
+  right: 1.75rem;
+  width: 58px;
+  height: 58px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  z-index: 999;
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  background: #1ebe5d;
+  transform: scale(1.1);
+  box-shadow: 0 6px 28px rgba(37, 211, 102, 0.65);
+}
+
+.whatsapp-float svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+
+/* Pulse animation to draw attention */
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #25d366;
+  opacity: 0.6;
+  animation: wa-pulse 2.5s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes wa-pulse {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  70%  { transform: scale(1.5); opacity: 0;   }
+  100% { transform: scale(1.5); opacity: 0;   }
+}
+
+/* Tooltip */
+.whatsapp-float .wa-tooltip {
+  position: absolute;
+  right: 68px;
+  background: var(--color-dark);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast);
+}
+
+.whatsapp-float:hover .wa-tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* =========================================================
+   TEAM CARD ENHANCEMENTS
+   ========================================================= */
+.team-avatar--photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-border);
+  background: var(--color-bg-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.team-avatar--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.team-tags .tag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.65rem;
+}
+
+@media (max-width: 768px) {
+  .team-grid[style*="repeat(2"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Hide hero stats bar when using full background photo */
+.hero-stats-bar { display: none !important; }
