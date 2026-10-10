@@ -549,6 +549,21 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- PWA Install Banner -->
+  <div class="pwa-install-banner" id="pwa-banner" role="complementary" aria-label="Install app">
+    <div class="pwa-banner-icon">
+      <img src="logo.png" alt="Hope 4 Teen Parents Uganda" />
+    </div>
+    <div class="pwa-banner-text">
+      <strong>Install as App</strong>
+      <span>Add to your home screen — works offline</span>
+    </div>
+    <div class="pwa-banner-actions">
+      <button class="pwa-install-btn" id="pwa-install-btn">Install</button>
+      <button class="pwa-dismiss-btn" id="pwa-dismiss-btn" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {

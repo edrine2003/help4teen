@@ -3493,3 +3493,292 @@ html, body {
     justify-content: center !important;
   }
 }
+
+/* =========================================================
+   MOBILE-FIRST OPTIMIZATIONS
+   ========================================================= */
+
+/* Larger touch targets for all buttons and links */
+@media (max-width: 768px) {
+
+  /* Buttons — easier to tap */
+  .btn {
+    min-height: 48px;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  /* Nav links — bigger tap area */
+  .mobile-nav-list li a {
+    padding: 1.1rem 1rem;
+    font-size: 1.1rem;
+  }
+
+  /* Quick help cards — full width on small phones */
+  .quick-help-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .quick-card {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Story cards — full width */
+  .stories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Team grid — single column */
+  .team-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer — better spacing */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* WhatsApp button — bigger on mobile */
+  .whatsapp-float {
+    width: 62px;
+    height: 62px;
+    bottom: 1.5rem;
+    right: 1.25rem;
+  }
+
+  .whatsapp-float svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Donate/Get Help buttons in header — show on mobile */
+  .btn-donate {
+    display: none !important;
+  }
+
+  /* Gallery — 2 columns on mobile */
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 150px;
+    gap: 0.4rem;
+  }
+
+  .gallery-item.gallery-wide {
+    grid-column: span 2;
+  }
+
+  /* Video — full width on mobile */
+  .video-wrap {
+    max-width: 100%;
+  }
+
+  /* Health cards — 2 columns */
+  .health-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem;
+  }
+
+  .health-card {
+    padding: 1.25rem 1rem;
+  }
+
+  /* Steps — 1 column */
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* About grid — single column */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Section padding — tighter on mobile */
+  .section-padding {
+    padding: 3rem 0;
+  }
+
+  .section-padding-sm {
+    padding: 2rem 0;
+  }
+
+  /* Confidential section buttons */
+  .confidential-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Final CTA buttons */
+  .final-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Stats grid — 2 columns */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  /* Contact methods — 1 column */
+  .contact-methods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Social cards — 2 columns */
+  .social-cards-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* MVP grid — 1 column */
+  .mvp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Involved grid — 1 column */
+  .involved-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Contact form wrap — single column */
+  .contact-form-wrap {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Values grid — 1 column */
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Partner grid — 2 columns */
+  .partner-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Donation tiers — 1 column */
+  .donation-tiers {
+    grid-template-columns: 1fr;
+  }
+
+  /* Articles grid — 1 column */
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Filter bar — wraps nicely */
+  .filter-bar {
+    gap: 0.4rem;
+  }
+
+  .filter-btn {
+    font-size: 0.78rem;
+    padding: 0.4rem 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .quick-help-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h1 { font-size: 1.65rem; }
+  h2 { font-size: 1.3rem; }
+}
+
+/* =========================================================
+   PWA INSTALL BANNER
+   ========================================================= */
+.pwa-install-banner {
+  display: none;
+  position: fixed;
+  bottom: 5rem;
+  left: 1rem;
+  right: 1rem;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 1rem 1.25rem;
+  z-index: 998;
+  align-items: center;
+  gap: 1rem;
+  border: 2px solid var(--color-primary);
+  animation: slideUp 0.4s ease;
+}
+
+.pwa-install-banner.show {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+.pwa-banner-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.pwa-banner-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pwa-banner-text {
+  flex: 1;
+}
+
+.pwa-banner-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  margin-bottom: 0.15rem;
+}
+
+.pwa-banner-text span {
+  font-size: 0.78rem;
+  color: var(--color-light);
+}
+
+.pwa-banner-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.pwa-install-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.pwa-dismiss-btn {
+  background: none;
+  border: none;
+  color: var(--color-light);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}

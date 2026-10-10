@@ -541,3 +541,54 @@
     }
   });
 })();
+
+
+/* ===================================================
+   PWA INSTALL PROMPT
+   =================================================== */
+(function () {
+  let deferredPrompt = null;
+  const banner  = document.getElementById('pwa-banner');
+  const installBtn = document.getElementById('pwa-install-btn');
+  const dismissBtn = document.getElementById('pwa-dismiss-btn');
+
+  if (!banner) return;
+
+  // Catch the browser's install prompt
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Only show if not dismissed before
+    if (!localStorage.getItem('pwa-dismissed')) {
+      setTimeout(() => banner.classList.add('show'), 3000);
+    }
+  });
+
+  // Install button clicked
+  if (installBtn) {
+    installBtn.addEventListener('click', () => {
+      banner.classList.remove('show');
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          deferredPrompt = null;
+        });
+      }
+    });
+  }
+
+  // Dismiss button clicked
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', () => {
+      banner.classList.remove('show');
+      localStorage.setItem('pwa-dismissed', '1');
+    });
+  }
+
+  // Hide banner if already installed
+  window.addEventListener('appinstalled', () => {
+    banner.classList.remove('show');
+    deferredPrompt = null;
+  });
+})();
