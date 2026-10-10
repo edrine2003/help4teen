@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://edrine2003.github.io/help4teen/sitemap.xml
+Sitemap: https://help4teenparentsorg.org/sitemap.xml

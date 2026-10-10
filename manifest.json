@@ -2,8 +2,8 @@
   "name": "Hope 4 Teen Parents Uganda",
   "short_name": "H4TPU",
   "description": "Reliable health information and support for young parents in Tororo District, Uganda.",
-  "start_url": "/help4teen/index.html",
-  "scope": "/help4teen/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#1a7a5e",
@@ -29,23 +29,15 @@
       "name": "Get Help",
       "short_name": "Get Help",
       "description": "Ask a health question",
-      "url": "/help4teen/contact.html",
+      "url": "/contact.html",
       "icons": [{ "src": "logo.png", "sizes": "192x192" }]
     },
     {
       "name": "Health Information",
       "short_name": "Health Info",
       "description": "Browse health topics",
-      "url": "/help4teen/health-information.html",
+      "url": "/health-information.html",
       "icons": [{ "src": "logo.png", "sizes": "192x192" }]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "w30.jpeg",
-      "sizes": "1280x720",
-      "type": "image/jpeg",
-      "label": "Hope 4 Teen Parents Uganda community session"
     }
   ]
 }
